@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/element-ui/index.css">
+    <script src="/common/js/vue.js"></script>
+    <script src="/element-ui/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <el-button type="danger" @click="open">うひゃ！</el-button>
+    <el-dialog :visible.sync="visible" title="華恋ちゃん">
+        <el-input show-password v-model="inp"></el-input>
+        <el-button @click="output">ここ</el-button>
+    </el-dialog>
+</div>
+</body>
+<script>
+    var vue = new Vue({
+        el:"#app",
+        data:{
+            visible:false,
+            inp:""
+        },methods:{
+            open:function () {
+                alert("请停止迫害")
+                this.visible=true
+            },
+            output:function(){
+                console.log(this.inp)
+                this.inp="ひかりちゃんと約束があるのだから"
+            }
+        }
+    })
+</script>
+</html>
