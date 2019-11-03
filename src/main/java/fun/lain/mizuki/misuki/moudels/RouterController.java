@@ -11,7 +11,18 @@ public class RouterController {
         //因此实际上模板引擎去找的就是 classpath:/templates/user/login.html
         return "user/login";
     }
+    @RequestMapping("/index")
+    public String toIndex(){
+        return "index";
+    }
+    @RequestMapping("/403")
+    public String to403(){
+        return "error/403";
+    }
 
-
+    @RequestMapping("/background")
+    public String toBackground() {
+        return "background/background";
+    }
 }
 

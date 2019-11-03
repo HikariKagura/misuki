@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
         UserInfo info = userDao.selectOne(new QueryWrapper<UserInfo>()
                 .eq("email",email));
         if(info == null){
-            System.out.println("用户不存在");
             return false;
         }
         if(info.getPassword().equals(password)){
