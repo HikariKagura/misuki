@@ -27,14 +27,16 @@
             <el-col :span="9"><p></p></el-col>
             <el-col :span="6">
                 <div class="logo"></div>
-                <el-form size="small" label-position="left" label-width="100px">
+                <el-form action="/api/login" method="POST" size="small" label-position="left" label-width="100px">
                     <el-form-item label="邮箱：">
-                        <el-input v-model="loginForm.email"></el-input>
+                        <el-input name="email" v-model="loginForm.email"></el-input>
                     </el-form-item>
                     <el-form-item label="密码：">
-                        <el-input show-password v-model="loginForm.password"></el-input>
-                        <el-checkbox>记住我</el-checkbox>
-                        <el-button type=primary class="login-button">登录</el-button>
+                        <el-input name="password" show-password v-model="loginForm.password"></el-input>
+                        <input type="checkbox" name="remember" value="true">
+                        <span>记住我</span>
+                        <a href="url">注册</a>
+                        <el-button native-type="submit" type=primary class="login-button">登录</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
