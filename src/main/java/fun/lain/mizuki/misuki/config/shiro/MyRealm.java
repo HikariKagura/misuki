@@ -40,12 +40,12 @@ public class MyRealm extends AuthorizingRealm {
         String password = String.copyValueOf(token1.getPassword());
         UserInfo info = userDao.selectOne(new QueryWrapper<UserInfo>().eq("email",email));
         if (info==null){
-            throw new AuthenticationException("用户名或密码错误！");
+            throw new UnknownAccountException("用户名或密码错误！");
         }
         if (info.getPassword().equals(password)){
             return new SimpleAuthenticationInfo(info,password,getName());
         }else{
-            throw new AuthenticationException("用户名或密码错误！");
+            throw new IncorrectCredentialsException("用户名或密码错误！");
         }
 
     }
