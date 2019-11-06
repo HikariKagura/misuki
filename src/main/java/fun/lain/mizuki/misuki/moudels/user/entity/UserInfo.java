@@ -16,4 +16,5 @@ public class UserInfo implements Serializable {
     private  String password;
     private String email;
     private Integer state;
+    private String role;//用户权限
 }

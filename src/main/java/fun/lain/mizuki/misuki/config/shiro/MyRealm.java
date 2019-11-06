@@ -12,6 +12,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,15 +22,13 @@ public class MyRealm extends AuthorizingRealm {
     @Resource
     UserDao userDao;
 
-    @Resource
-    RoleService roleService = new RoleServiceImpl();
-
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         UserInfo info = (UserInfo)principalCollection.getPrimaryPrincipal();
-        List<String> roles = roleService.getUserRole(info.getId());
         SimpleAuthorizationInfo info1 = new SimpleAuthorizationInfo();
-        Set roleSet = new HashSet<String>(roles);
+        Set roleSet = new HashSet<String>(){{
+            add(info.getRole());
+        }};
         info1.setRoles(roleSet);
         return info1;
     }
