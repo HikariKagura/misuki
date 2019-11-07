@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <head th:replace="header"></head>
+</head>
+<style>
+    .logo{
+        background-image: url('/common/img/timg.jpg');
+        background-size:100% 100%;
+        width: 180px;
+        height: 180px;
+        border-radius: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+    .login-button{
+        width: 100%;
+    }
+</style>
+<body>
+<div id="login">
+    <el-row>
+        <el-col :span="9"><p></p></el-col>
+        <el-col :span="6">
+            <div class="logo"></div>
+            <el-form action="/user/login" method="POST" size="small" label-position="left" label-width="100px">
+                <el-form-item label="邮箱：">
+                    <el-input name="email" v-model="loginForm.email"></el-input>
+                </el-form-item>
+                <el-form-item label="密码：">
+                    <el-input name="password" show-password v-model="loginForm.password"></el-input>
+                    <input type="checkbox" name="remember" value="true">
+                    <span>记住我</span>
+
+                        <el-button type="text" style="float: right" @click="toReg">注册</el-button>
+                        <el-dialog :visible.sync="regForm.visible" style="width:70%; margin-left:auto; margin-right:auto" title="注册" >
+
+                                <el-form size="small" label-position="left" label-width="70px" >
+                                     <el-form-item label="用户名">
+                                        <el-input type="text" v-model="regForm.userName"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="邮箱">
+                                        <el-input type="text" v-model="regForm.email"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="密码">
+                                        <el-input type="password" v-model="regForm.pass"></el-input>
+                                    </el-form-item>
+                                    <el-form-item label="确认密码" prop="checkPass">
+                                        <el-input type="password" v-model="regForm.checkPass"></el-input>
+                                    </el-form-item>
+                                </el-form>
+
+                            <span slot="footer" class="dialog-footer">
+                                <el-button type="primary" @click="go_on" >确 定</el-button>
+                                <el-button @click="cancel">注 册</el-button>
+                            </span>
+                        </el-dialog>
+
+                    <el-button native-type="submit" type=primary class="login-button">登录</el-button>
+                </el-form-item>
+            </el-form>
+        </el-col>
+        <el-col :span="9"><p></p></el-col>
+    </el-row>
+</div>
+</body>
+<script>
+    var vue = new Vue({
+        el:"#login",
+        data:{
+            loginForm:{
+                email:"",
+                password:"",
+                remember:false
+            },regForm:{
+                visible:false,
+                userName:"",
+                email:"",
+                pass:"",
+                checkPass:""
+
+
+            }
+        },methods:{
+            toReg:function () {
+                this.regForm.visible=true
+            },
+            cancel:function () {
+                this.close()
+            },
+            go_on:function () {
+                
+            }
+
+
+
+        }
+    })
+</script>
+</html>
