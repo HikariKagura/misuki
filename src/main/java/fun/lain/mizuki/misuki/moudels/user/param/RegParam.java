@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class RegParam {
     private String userName;
-    private String password;
+    private String pass;
     private String email;
 }

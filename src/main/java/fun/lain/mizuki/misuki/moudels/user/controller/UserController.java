@@ -28,12 +28,12 @@ public class UserController {
 
     @RequestMapping("/reg")
     //权限校验注解，要求访问此接口的必须要拥有以下角色，OR代表只要拥有其中任意一个就行，AND代表两者都要有
-    @RequiresRoles(value = {"normal","superAdmin"},logical = Logical.OR)
+//    @RequiresRoles(value = {"normal","superAdmin"},logical = Logical.OR)
     public Echo reg(@RequestBody RegParam param){
 
         UserInfo info = new UserInfo();
         info.setUserName(param.getUserName());
-        info.setPassword(param.getPassword());
+        info.setPassword(param.getPass());
         info.setEmail(param.getEmail());
         if(userService.reg(info)){
             return Echo.success().message("注册成功！");
