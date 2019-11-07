@@ -18,4 +18,10 @@ public class RestExceptionAdapters {
     public Echo handleRestAuthException(){
         return Echo.error(Echo.Code.ERROR,"无权访问！");
     }
+
+    @ExceptionHandler(value = RestException.class)
+    public Echo handleRestException(RestException e){
+        return Echo.error(e.getMessage());
+
+    }
 }

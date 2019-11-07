@@ -94,9 +94,21 @@
             reg:function () {
                 axios.post("/api/reg",this.regForm).then(
                     res =>{
-                        console.log(res.data)
+                        if(res.data.code != 200){
+                            this.$message({
+                                type:"warning",
+                                message:res.data.message
+                            })
+                        }else{
+                            this.$message({
+                                type:'success',
+                                message:res.data.message
+                            });
+                            this.visible = false;
+                        }
                 }
                 )
+
             }
 
 
