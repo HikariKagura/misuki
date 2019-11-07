@@ -74,7 +74,7 @@ public class Echo {
         return this;
     }
 
-    public Echo meaage(String message){
+    public Echo message(String message){
         this.message = message;
         return this;
     }
