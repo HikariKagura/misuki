@@ -24,5 +24,9 @@ public class RouterController {
     public String toBackground() {
         return "background/background";
     }
+    @RequestMapping("/publish")
+    public String toPublish(){
+        return "publish";
+    }
 }
 

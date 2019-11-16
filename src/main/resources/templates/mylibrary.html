@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>首页</title>
+    <title>我的书房</title>
     <head th:replace="header"></head>
 </head>
 
 <body>
-<div id="index">
+<div id="mylib">
     <div id="top">
         <el-row>
             <el-col :span="4"></el-col>
@@ -17,14 +17,16 @@
             <el-col :span="8"></el-col>
         </el-row>
     </div>
-    <div id="latest">
+    <div id="user">
         <el-row>
-            <el-col :span="24"></el-col>
+            <el-col :span="12"></el-col>
+            <el-col :span="12"></el-col>
         </el-row>
     </div>
-    <div id="history">
+    <div id="list">
         <el-row>
-            <el-col :span="24"></el-col>
+            <el-col :span="12"></el-col>
+            <el-col :span="12"></el-col>
         </el-row>
     </div>
 </div>

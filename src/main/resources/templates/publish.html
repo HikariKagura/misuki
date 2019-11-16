@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>投稿</title>
+    <head th:replace="header"></head>
+</head>
+
+<body>
+<div id="publish">
+    <div id="top">
+        <el-row>
+            <el-col :span="4"><el-button type="text" size="medium" style="margin-left:auto;margin-right:auto">首页</el-button></el-col>
+            <el-col :span="4"><el-button type="text" size="medium" style="margin-left:auto;margin-right:auto">发现</el-button></el-col>
+            <el-col :span="4"><el-button type="text" size="medium" style="margin-left:auto;margin-right:auto">我的书房</el-button></el-col>
+            <el-col :span="4"><el-button type="text" size="medium" style="margin-left:auto;margin-right:auto">投稿</el-button></el-col>
+            <el-col :span="8"></el-col>
+        </el-row>
+    </div>
+    <div id="form">
+        <el-row>
+            <el-col :span="12"></el-col>
+            <el-col :span="12"></el-col>
+        </el-row>
+    </div>
+
+    <div id="edit">
+        <el-row>
+            <el-col :span="24"></el-col>
+        </el-row>
+    </div>
+</div>
+</body>
+<script>
+    var vue = new Vue({
+        el: "#publish",
+        data:{
+
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>
