@@ -28,5 +28,9 @@ public class RouterController {
     public String toPublish(){
         return "publish";
     }
+    @RequestMapping("/mylib")
+    public String toMylib(){
+        return "mylibrary";
+    }
 }
 

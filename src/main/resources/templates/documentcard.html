@@ -10,13 +10,17 @@
 <div id="card">
     <div id="top">
         <el-row>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="4"></el-col>
-            <el-col :span="8"></el-col>
+            <el-col :span="4"><a size="medium" href="/index" style="text-decoration:none; font-size:20px; color:green;text-align: center; display: block">首页</a></el-col>
+            <el-col :span="4"><a size="medium" href="" style="text-decoration:none; font-size:20px; color:green;text-align: center; display: block;">发现</a></el-col>
+            <el-col :span="4"><a size="medium" href="/mylib" style="text-decoration:none; font-size:20px; color:green; text-align: center; display:block">我的书房</a></el-col>
+            <el-col :span="4"><a size="medium" href="/publish" style="text-decoration:none; font-size:20px; color:green; text-align: center; display:block">投稿</a></el-col>
+            <el-col :span="5">
+                <el-input placeholder="搜索" prefix-icon="el-icon-search" v-model="search" size="mini"></el-input>
+            </el-col>
+            <el-col :span="3"><a href="/login" style="font-size: 16px; color: blue; text-align: center; display:block">登录</a></el-col>
         </el-row>
     </div>
+    <hr/>
 
     <div id="info">
          <el-row>
@@ -37,4 +41,15 @@
 
 </div>
 </body>
+<script>
+    var vue = new Vue({
+        el: "#card",
+        data:{
+            search:''
+        },
+        methods:{
+
+        }
+    })
+</script>
 </html>
