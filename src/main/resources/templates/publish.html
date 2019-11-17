@@ -25,10 +25,10 @@
     <div id="form">
         <el-row>
             <br/><br/>
-            <el-col :span="4">
+            <el-col :span="3">
                 <el-image src="bgImg1"></el-image>
             </el-col>
-            <el-col :span="8">
+            <el-col :span="9">
                 <el-form size="small" label-position="right" label-width="80px" style="width:80%">
                     <el-form-item label="标题">
                         <el-input type="text" v-model="cardForm.title"></el-input>
@@ -53,14 +53,14 @@
             </el-col>
 
             <el-col :span="9">
-                <el-upload :auto-upload="false" :limit="1" style="width:80%"
+                <el-upload :auto-upload="false" :limit="1" style="width:80%" action="0"
                         :file-list="cardForm.covers"
                         list-type="picture">
                     <el-button size="small" type="primary">点击上传封面</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
                 </el-upload>
                 <br/>
-                <el-upload :auto-upload="false" limit="3" style="width:80%" :multiple="true"
+                <el-upload :auto-upload="false" :limit="3" style="width:80%" :multiple="true" action="0"
                         :file-list="cardForm.files">
                     <el-button size="small" type="primary">点击上传附件</el-button>
                     <div slot="tip" class="el-upload__tip">支持doc,docx,pdf格式的文件。最多可上传三个</div>
@@ -72,12 +72,14 @@
             </el-col>
         </el-row>
 
-        <div id="editor">
-
+        <div  style="width: 70%; margin-left:auto; margin-right:auto">
+            <div id="editor"></div>
+            <el-button @click="getEditorHtml" type="primary">存草稿</el-button>
+            <el-button @click="getEditorHtml" type="primary">提  交</el-button>
         </div>
-        <el-button @click="getEditorHtml">Get Daze!</el-button>
 
     </div>
+    <br/>
 </div>
 </body>
 <script>
