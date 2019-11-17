@@ -54,7 +54,7 @@
 
             <el-col :span="9">
                 <el-upload :auto-upload="false" :limit="1" style="width:80%" action="0"
-                        :file-list="cardForm.covers"
+                        :file-list="cardForm.cover"
                         list-type="picture">
                     <el-button size="small" type="primary">点击上传封面</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -74,8 +74,8 @@
 
         <div  style="width: 70%; margin-left:auto; margin-right:auto">
             <div id="editor"></div>
-            <el-button @click="getEditorHtml" type="primary">存草稿</el-button>
-            <el-button @click="getEditorHtml" type="primary">提  交</el-button>
+            <el-button @click="save(1)" type="primary">存草稿</el-button>
+            <el-button @click="save(2)" type="primary">提&nbsp;交</el-button>
         </div>
 
     </div>
@@ -96,7 +96,7 @@
                 tags:'',
                 author:'',
                 introduce:'',
-                covers:[],
+                cover:[],
                 files:[]
             }
         },
@@ -114,8 +114,13 @@
             yes:function () {
                 this.visible=false
             },getEditorHtml(){
-
                 alert(this.editor.txt.html())
+            },save(type){
+
+                this.cardForm["article"]=this.editor.txt.html();
+                this.cardForm["length"]=this.editor.txt.text().length;
+                axios.post("/api/doc/upload",this.cardForm)
+
             }
         }
     })

@@ -25,23 +25,34 @@
     <div id="info">
          <el-row>
              <el-col :span="3"><el-image src="bgImg1"></el-image></el-col>
-             <el-col :span="9">
 
-             </el-col>
 
              <el-col :span="9">
-
+                <p title="title">123</p>
              </el-col>
+
+
+             <el-col :span="9">
+                 <el-image src="cover"></el-image>
+                 <el-button>收藏</el-button>
+                 <el-button>分享</el-button>
+                 <el-button>在线试读</el-button>
+                 <el-button>下载</el-button>
+             </el-col>
+
+
              <el-col :span="3"><el-image src="bgImg2"></el-image></el-col>
          </el-row>
     </div>
-
+    <hr/>
     <div id="comment">
 
     </div>
 
-    <div id="edit">
-
+    <div  style="width: 70%; margin-left:auto; margin-right:auto">
+        <div id="editor"></div>
+        <el-button @click="save(1)" type="primary">存草稿</el-button>
+        <el-button @click="save(2)" type="primary">提&nbsp;交</el-button>
     </div>
 
 </div>
@@ -52,11 +63,23 @@
         data:{
             bgImg1:'',
             bgImg2:'',
-            search:''
+            search:'',
+            cardForm: {
+                title:'',
+                cover:''
+            }
 
+        },mounted(){
+            let E = window.wangEditor
+            let editor = new E('#editor')
+            // 或者 var editor = new E( document.getElementById('editor') )
+            editor.create()
+            this.editor = editor
         },
         methods:{
-
+            getEditorHtml(){
+                alert(this.editor.txt.html())
+            }
         }
     })
 </script>

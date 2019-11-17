@@ -32,5 +32,10 @@ public class RouterController {
     public String toMylib(){
         return "mylibrary";
     }
+    @RequestMapping("/content")
+    public String toContent(){
+        return "documentcard";
+    }
+
 }
 

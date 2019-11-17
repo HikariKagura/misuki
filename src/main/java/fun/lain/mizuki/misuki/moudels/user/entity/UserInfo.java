@@ -13,7 +13,7 @@ public class UserInfo implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
     private String userName;
-    private  String password;
+    private String password;
     private String email;
     private Integer state;
     private String role;//用户权限
