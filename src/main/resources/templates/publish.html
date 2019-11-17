@@ -75,6 +75,7 @@
         <div id="editor">
 
         </div>
+        <el-button @click="getEditorHtml">Get Daze!</el-button>
 
     </div>
 </div>
@@ -87,6 +88,7 @@
             bgImg2:'',
             search:'',
             visible:false,
+            editor:null,
             cardForm:{
                 title:'',
                 fullName:'',
@@ -96,12 +98,22 @@
                 files:[]
             }
         },
+        mounted(){
+            let E = window.wangEditor
+            let editor = new E('#editor')
+            // 或者 var editor = new E( document.getElementById('editor') )
+            editor.create()
+            this.editor = editor
+        },
         methods:{
             toShow:function () {
                 this.visible=true
             },
             yes:function () {
                 this.visible=false
+            },getEditorHtml(){
+
+                alert(this.editor.txt.html())
             }
         }
     })
