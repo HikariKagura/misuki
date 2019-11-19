@@ -54,14 +54,17 @@
 
             <el-col :span="9">
                 <el-upload :auto-upload="false" :limit="1" style="width:80%" action="0"
-                        :file-list="cardForm.cover"
-                        list-type="picture">
+                        list-type="picture"
+                        :on-change="changeCover"
+                >
                     <el-button size="small" type="primary">点击上传封面</el-button>
                     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
                 </el-upload>
                 <br/>
                 <el-upload :auto-upload="false" :limit="3" style="width:80%" :multiple="true" action="0"
-                        :file-list="cardForm.files">
+                :on-change="changeAttachment"
+                >
+
                     <el-button size="small" type="primary">点击上传附件</el-button>
                     <div slot="tip" class="el-upload__tip">支持doc,docx,pdf格式的文件。最多可上传三个</div>
                 </el-upload>
@@ -92,6 +95,7 @@
             visible:false,
             editor:null,
             cardForm:{
+                type:0,
                 title:'',
                 tags:'',
                 author:'',
@@ -108,19 +112,40 @@
             this.editor = editor
         },
         methods:{
+            changeCover(file,fileList){
+                let files = new Array();
+                fileList.forEach(file=>{
+                    files.push(file['raw'])
+                })
+                this.cardForm.cover = files;
+            },
+            changeAttachment(file,fileList){
+                let files = new Array();
+                fileList.forEach(file=>{
+                    files.push(file['raw'])
+                })
+                this.cardForm.files = files;
+            },
             toShow:function () {
                 this.visible=true
             },
             yes:function () {
                 this.visible=false
-            },getEditorHtml(){
-                alert(this.editor.txt.html())
             },save(type){
-
                 this.cardForm["article"]=this.editor.txt.html();
                 this.cardForm["length"]=this.editor.txt.text().length;
-                axios.post("/api/doc/upload",this.cardForm)
+                this.cardForm['type'] = type;
+                axios.post("/api/doc/upload",this.buildForm(this.cardForm),{
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                })
 
+            },buildForm(form){
+                let data = new FormData()
+
+                for(key in form){
+                    data.append(key,form[key])
+                }
+                return data
             }
         }
     })
