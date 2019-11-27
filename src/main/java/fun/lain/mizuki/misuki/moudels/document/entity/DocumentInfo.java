@@ -4,8 +4,14 @@ package fun.lain.mizuki.misuki.moudels.document.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data
 @TableName("document_info")
 public class DocumentInfo {
@@ -21,4 +27,6 @@ public class DocumentInfo {
     private String status;
     private String remarks;
     private Long userId;
+    private String length;
+    private String author;
 }

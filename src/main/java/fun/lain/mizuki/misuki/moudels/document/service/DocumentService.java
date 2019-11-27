@@ -1,6 +1,8 @@
 package fun.lain.mizuki.misuki.moudels.document.service;
 
 
-public interface DocumentService {
+import fun.lain.mizuki.misuki.moudels.document.controller.DocumentUploadParam;
 
+public interface DocumentService {
+    public boolean create(DocumentUploadParam param);
 }
